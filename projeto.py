@@ -4,14 +4,14 @@ nodes = {
     1: 'Ceilândia', 2: 'Samambaia', 3: 'Taguatinga', 4: 'Plano Piloto',
     5: 'Planaltina', 6: 'Águas Claras', 7: 'Recanto das Emas', 8: 'Gama', 
     9: 'Guará', 10: 'Sobradinho', 11:'Park Way',
-    13: 'Congresso Nacional', 14: 'Palácio do Planalto', 15: 'Palácio Itamaraty',
-    16: 'Palácio da Alvorada',
-    17: 'Biblioteca Nacional', 18: 'Ponte JK', 19: 'Torre de TV', 20: 'Pontão do Lago Sul',
-    21: 'Jardim Botânico de Brasília',
-    22: 'Parque Ecológico de Águas Claras', 23: 'Ermida Dom Bosco', 24: 'Memorial JK',
-    25: 'Centro Cultural Banco do Brasil',
-    26: 'Museu Nacional', 27: 'Museu do Catetinho',
-    28: 'Catedral Metropolitana de Brasília', 29: 'FGA'
+    12: 'Congresso Nacional', 13: 'Palácio do Planalto', 14: 'Palácio Itamaraty',
+    15: 'Palácio da Alvorada',
+    16: 'Biblioteca Nacional', 17: 'Ponte JK', 18: 'Torre de TV', 19: 'Pontão do Lago Sul',
+    20: 'Jardim Botânico de Brasília',
+    21: 'Parque Ecológico de Águas Claras', 22: 'Ermida Dom Bosco', 23: 'Memorial JK',
+    24: 'Centro Cultural Banco do Brasil',
+    25: 'Museu Nacional', 26: 'Museu do Catetinho',
+    27: 'Catedral Metropolitana de Brasília', 28: 'FGA'
 }
 
 grafo = {}
