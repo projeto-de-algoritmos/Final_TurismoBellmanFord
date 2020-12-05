@@ -1,4 +1,5 @@
 import heapq
+from time import perf_counter as timer
 
 nodes = {   
     1: 'Ceilândia', 2: 'Samambaia', 3: 'Taguatinga', 4: 'Plano Piloto',
@@ -16,7 +17,7 @@ nodes = {
 
 grafo = {}
 numVertices = 0
-
+arestas = []
 
 def adcVertice(vertice):
   global grafo
@@ -29,7 +30,8 @@ for cidade in nodes:
   adcVertice(cidade)
 
 def adcAresta(node1, node2, distancia):
-  global grafo
+  global grafo, arestas
+  arestas.append((node1, node2, distancia))
   grafo[node1].append((node2, distancia))
   grafo[node2].append((node1, distancia))
 
@@ -46,23 +48,23 @@ adcAresta(6, 9, 17)
 adcAresta(7, 8, 17)
 adcAresta(8, 11, 17)
 adcAresta(11, 4, 15)
-adcAresta(4, 13, 4)
-adcAresta(4, 14, 5)
-adcAresta(4, 15, 4)
-adcAresta(4, 16, 9)
-adcAresta(4, 17, 4)
-adcAresta(4, 18, 8)
-adcAresta(4, 19, 4)
-adcAresta(4, 20, 7)
-adcAresta(4, 21, 16)
-adcAresta(6, 22, 2)
-adcAresta(4,23,17)
-adcAresta(4,24,5)
-adcAresta(4,25,9)
-adcAresta(4,26,4)
-adcAresta(11,27,15)
-adcAresta(4,28,3)
-adcAresta(8,29,5)
+adcAresta(4, 12, 4)
+adcAresta(4, 13, 5)
+adcAresta(4, 14, 4)
+adcAresta(4, 15, 9)
+adcAresta(4, 16, 4)
+adcAresta(4, 17, 8)
+adcAresta(4, 18, 4)
+adcAresta(4, 19, 7)
+adcAresta(4, 20, 16)
+adcAresta(6, 21, 2)
+adcAresta(4,22,17)
+adcAresta(4,23,5)
+adcAresta(4,24,9)
+adcAresta(4,25,4)
+adcAresta(11,26,15)
+adcAresta(4,27,3)
+adcAresta(8,28,5)
 
 def printGrafo(grafo = grafo):
   for node in range(1, 12):
@@ -72,7 +74,6 @@ def printGrafo(grafo = grafo):
             print('[{}] {}'.format(vizinho[0], nodes[vizinho[0]]), end=' - ')
         else:
             print('[{}] {}'.format(vizinho[0], nodes[vizinho[0]]))
-
 
 dijDist = []
 def dijkstra(partida,destino, printar = True):
@@ -105,16 +106,19 @@ def bellmanFord(partida, destino = 1, gerarLista = True):
                 dist[node1] = dist[node2] + distancia
                 if node1 == destino and not gerarLista:
                     return
-        
+
 def menu():
   while True:
       print('01. Listar Cidades')
       print('02. Listar Pontos Turísticos')
       print('03. Distancia entre cidade e ponto turístico')
       print('04. Mostrar Lista de Adjacencias')
-      print('05. Encerrar')
+      print('05. Comparar Dijkstra e Bellman-Ford')
+      print('06. Encerrar')
+      print('\nA função 3 foi modificada para incluir o algoritmo de Bellman-Ford')
+      print('A função 5 compara Bellman-Ford e Dijkstra em todos os nós de forma geral\n')
 
-      func = int(input('Selecione uma função(1~5): '))
+      func = int(input('Selecione uma função(1~6): '))
       if func == 1:
           print(' ')
           for cidade in nodes:
@@ -129,17 +133,39 @@ def menu():
           print(' ')
       elif func == 3:
           partida = int(input('Selecione a cidade de partida(1 - 11): '))
-          destino = int(input('Selecione o ponto turistico de destino(13 - 29): '))
+          destino = int(input('Selecione o ponto turistico de destino(12 - 28): '))
           print(' ')
+          print('Dijkstra:')
+          t0 = timer()
           dijkstra(partida, destino)
+          t1 = timer()
+          print(' ({:.10f} s)'.format(t1-t0))
+          print('Bellman Ford:')
+          t2 = timer()
+          bellmanFord(partida, destino, False)
+          t3 = timer()
+          print(dist[destino], 'km',end=' ')
+          print('({:.10f} s)'.format(t3-t2))
           print(" ")
       elif func == 4:
           print(" ")
           printGrafo(grafo)
           print(" ")
-      elif func ==5:
+      elif func == 5:
+        print('\nLista de distancias do ponto 1:\n')
+        t0 = timer()
+        for i in nodes:
+          dijkstra(1, i, False)
+        t1 = timer()
+        print(dijDist)
+        print('Dijkstra: {:.10f} segundos\n'.format(t1-t0))
+        t2 = timer()
+        bellmanFord(1)
+        t3 = timer()
+        print(dist[1:])
+        print('Bellman-Ford: {:.10f} segundos\n'.format(t3-t2))
+      elif func ==6:
           return
       else:
           print('Função não definida!\n')
-
 menu()
