@@ -74,16 +74,37 @@ def printGrafo(grafo = grafo):
             print('[{}] {}'.format(vizinho[0], nodes[vizinho[0]]))
 
 
-def dijkstra(partida,destino,grafo = grafo):
+dijDist = []
+def dijkstra(partida,destino, printar = True):
   h = []
   heapq.heappush(h,(0,partida))
+  global dijDist, grafo
   while len(h)!=0:
       currcost,currvtx = heapq.heappop(h)
       if currvtx == destino:
-          print("Ponto de partida {} para o Destino {} tem a distancia de {} km".format(nodes[partida],nodes[destino],currcost))
+          dijDist.append(currcost)
+          if printar:
+            print("{} -> {}: {} km".format(nodes[partida],nodes[destino],currcost), end='')
           break
       for (neigh,neighcost) in grafo[currvtx]:
           heapq.heappush(h,(currcost+neighcost,neigh))
+
+dist =[]
+
+def bellmanFord(partida, destino = 1, gerarLista = True):
+    global dist
+    dist = [float("Inf")] * (len(nodes) + 1)
+    dist[partida] = 0
+    for i in range(len(nodes)):
+        for (node1, node2, distancia) in arestas:
+            if dist[node1] != float('Inf') and dist[node1] + distancia < dist[node2]:
+                dist[node2] = dist[node1] + distancia
+                if node2 == destino and not gerarLista:
+                    return
+            if dist[node2] != float('Inf') and dist[node2] + distancia < dist[node1]:
+                dist[node1] = dist[node2] + distancia
+                if node1 == destino and not gerarLista:
+                    return
         
 def menu():
   while True:
