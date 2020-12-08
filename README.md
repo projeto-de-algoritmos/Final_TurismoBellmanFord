@@ -1,44 +1,28 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
 
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
+# Turismo Bellman Ford
 
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 10<br>
+**Conteúdo da Disciplina**: Final<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 15/0141220  |  Matheus de Cristo Doreia Estanislau |
+| 18/0129147  |  Pedro de Miranda Haick |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Projeto tem como objetivo comparar a eficiência entre Dijkstra e Bellman Ford no projeto Turismo de grafos 2
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
 
-## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+![Print1](https://raw.githubusercontent.com/projeto-de-algoritmos/Final_TurismoBellmanFord/master/final.png)
 
-## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+## Instalação e Uso
+**Linguagem**: Python3<br>
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+1. Clonar repositório
+2. Entrar no diretório do projeto
+3. Executar o projeto com o comando ```python3 projeto.py```
 
 
 
